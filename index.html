@@ -5,85 +5,211 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Pebbles Glam Closet</title>
 
-<!-- ฟอนต์ทางการ หรู -->
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Lato:wght@300;400;500&display=swap" rel="stylesheet">
 
 <style>
-body {
-    margin: 0;
-    font-family: 'Montserrat', sans-serif;
-    background-color: #fffafb;
-    color: #333;
+body{
+    margin:0;
+    font-family:'Lato',sans-serif;
+    background:#fffafb;
+    color:#333;
 }
 
-header {
-    text-align: center;
-    padding: 60px 20px;
+nav{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:20px 8%;
+    background:white;
+    position:sticky;
+    top:0;
 }
 
-h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: 48px;
-    letter-spacing: 2px;
-    margin-bottom: 10px;
+.logo{
+    font-family:'Playfair Display',serif;
+    font-size:22px;
 }
 
-.subtitle {
-    font-size: 16px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: #b76e79;
+.cart{
+    cursor:pointer;
+    font-size:14px;
 }
 
-.hero {
-    text-align: center;
-    padding: 40px 20px 80px;
+header{
+    text-align:center;
+    padding:80px 20px;
 }
 
-.hero p {
-    font-size: 18px;
-    margin-bottom: 30px;
+h1{
+    font-family:'Playfair Display',serif;
+    font-size:48px;
+    margin:0;
 }
 
-.btn {
-    display: inline-block;
-    padding: 12px 30px;
-    background-color: #e8cfd4;
-    color: #000;
-    text-decoration: none;
-    font-weight: 500;
-    letter-spacing: 1px;
-    transition: 0.3s;
+.tagline{
+    letter-spacing:3px;
+    color:#c48a95;
+    margin-top:15px;
+    font-size:13px;
 }
 
-.btn:hover {
-    background-color: #d9b6bd;
+.button{
+    display:inline-block;
+    margin-top:30px;
+    padding:12px 30px;
+    background:#e6c3c8;
+    text-decoration:none;
+    color:black;
+    font-size:13px;
+    letter-spacing:2px;
 }
 
-footer {
-    text-align: center;
-    padding: 20px;
-    font-size: 13px;
-    color: #888;
+.section{
+    padding:70px 10%;
+    text-align:center;
+}
+
+.section h2{
+    font-family:'Playfair Display',serif;
+    font-size:32px;
+}
+
+.products{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:30px;
+    margin-top:40px;
+}
+
+.card{
+    background:white;
+    padding:20px;
+}
+
+.card img{
+    width:100%;
+    height:260px;
+    object-fit:cover;
+}
+
+.price{
+    color:#c48a95;
+    margin:10px 0;
+}
+
+.add-btn{
+    padding:8px 20px;
+    border:1px solid #e6c3c8;
+    background:transparent;
+    cursor:pointer;
+}
+
+.about{
+    background:#fdf2f4;
+}
+
+footer{
+    padding:40px;
+    text-align:center;
+    font-size:13px;
+    color:#999;
+}
+
+.cart-popup{
+    position:fixed;
+    right:20px;
+    top:80px;
+    background:white;
+    padding:20px;
+    width:250px;
+    display:none;
+    box-shadow:0 5px 20px rgba(0,0,0,0.08);
 }
 </style>
 </head>
 
 <body>
 
+<nav>
+    <div class="logo">Pebbles Glam Closet</div>
+    <div class="cart" onclick="toggleCart()">
+        Cart (<span id="cart-count">0</span>)
+    </div>
+</nav>
+
+<div class="cart-popup" id="cart-box">
+    <h3>Shopping Cart</h3>
+    <div id="cart-items">ยังไม่มีสินค้า</div>
+</div>
+
 <header>
     <h1>Pebbles Glam Closet</h1>
-    <div class="subtitle">Elegant • Minimal • Feminine</div>
+    <div class="tagline">ELEGANT · MINIMAL · FEMININE</div>
+    <a href="#shop" class="button">SHOP NOW</a>
 </header>
 
-<section class="hero">
-    <p>เสื้อผ้าผู้หญิงโทนชมพูขาว เรียบหรู ดูแพง</p>
-    <a href="#" class="btn">SHOP NOW</a>
+<section id="shop" class="section">
+    <h2>New Collection</h2>
+    <div class="products">
+
+        <div class="card">
+            <img src="https://via.placeholder.com/300x400">
+            <h3>Blush Satin Dress</h3>
+            <div class="price">1,290 ฿</div>
+            <button class="add-btn" onclick="addToCart('Blush Satin Dress')">Add to Cart</button>
+        </div>
+
+        <div class="card">
+            <img src="https://via.placeholder.com/300x400">
+            <h3>Soft Pink Blazer</h3>
+            <div class="price">1,590 ฿</div>
+            <button class="add-btn" onclick="addToCart('Soft Pink Blazer')">Add to Cart</button>
+        </div>
+
+        <div class="card">
+            <img src="https://via.placeholder.com/300x400">
+            <h3>Ivory Silk Top</h3>
+            <div class="price">890 ฿</div>
+            <button class="add-btn" onclick="addToCart('Ivory Silk Top')">Add to Cart</button>
+        </div>
+
+    </div>
+</section>
+
+<section class="section about">
+    <h2>About Us</h2>
+    <p>
+        Pebbles Glam Closet คือร้านเสื้อผ้าผู้หญิงสไตล์ Elegant Minimal
+        โทนชมพูขาว เรียบหรู ดูแพง สำหรับสาวยุคใหม่
+    </p>
+</section>
+
+<section class="section">
+    <h2>Contact</h2>
+    <p>Instagram: @pebblesglamcloset</p>
+    <p>Email: pebblesglam@gmail.com</p>
 </section>
 
 <footer>
-    © 2026 Pebbles Glam Closet. All rights reserved.
+© 2026 Pebbles Glam Closet. All rights reserved.
 </footer>
+
+<script>
+let cartCount=0;
+let cartItems=[];
+
+function addToCart(item){
+    cartCount++;
+    cartItems.push(item);
+    document.getElementById("cart-count").innerText=cartCount;
+    document.getElementById("cart-items").innerHTML=cartItems.join("<br>");
+}
+
+function toggleCart(){
+    const box=document.getElementById("cart-box");
+    box.style.display=box.style.display==="block"?"none":"block";
+}
+</script>
 
 </body>
 </html>
