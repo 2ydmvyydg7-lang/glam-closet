@@ -4,76 +4,76 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Pebbles Glam Closet</title>
+
 <style>
 body {
-    font-family: 'Lato', sans-serif;
-    background: #fffafb;
-    margin: 0;
-    padding: 20px;
-    text-align: center;
+  font-family: 'Georgia', serif;
+  background-color: #fffafb;
+  margin: 0;
+  padding: 30px;
+  text-align: center;
 }
 
 h1 {
-    color: #d88ca1;
-    margin-bottom: 15px;
+  color: #c67b8b;
+  margin-bottom: 30px;
 }
 
-.product {
-    background: white;
-    border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.07);
-    padding: 18px;
-    margin: 20px auto;
-    max-width: 380px;
+#products {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
 }
 
-.product img {
-    width: 100%;
-    border-radius: 8px;
+.card {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
 }
 
-.price-day {
-    text-align: left;
-    margin-top: 10px;
-    font-size: 14px;
+.card img {
+  width: 100%;
+  border-radius: 10px;
 }
 
-.price-day div {
-    margin: 6px 0;
+.price {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #444;
 }
 </style>
 </head>
+
 <body>
 
 <h1>Pebbles Glam Closet</h1>
+
 <div id="products"></div>
 
 <script>
-// 📊 ใส่ Sheet ID ของคุณตรงนี้
-const sheetID = "1pRBf8Qr_y-UxNEA11W2n-N-puSr_nMGBVe-qg_yqs30";
-
-// 🔗 URL ดึงข้อมูลเป็น JSON
-const url = `https://opensheet.elk.sh/${sheetID}/Sheet1`;
-
-fetch(url)
+fetch("https://opensheet.elk.sh/1pRBf8Qr_y-UxNEA11W2n-N-puSr_nMGBVe-qg_yqs30/Sheet1")
   .then(res => res.json())
   .then(data => {
     const container = document.getElementById("products");
 
     data.forEach(item => {
       container.innerHTML += `
-        <div class="product">
+        <div class="card">
           <img src="${item.image}" alt="${item.name}">
           <h3>${item.name}</h3>
-          <div class="price-day">
-              ${item.day1 ? `<div>เช่า 1 วัน — ${item.day1} ฿</div>` : ''}
-              ${item.day3 ? `<div>เช่า 3 วัน — ${item.day3} ฿</div>` : ''}
-              ${item.day5 ? `<div>เช่า 5 วัน — ${item.day5} ฿</div>` : ''}
-              ${item.day7 ? `<div>เช่า 7 วัน — ${item.day7} ฿</div>` : ''}
+          <div class="price">
+            <p>Day1: ${item.day1} บาท</p>
+            <p>Day3: ${item.day3} บาท</p>
+            <p>Day5: ${item.day5} บาท</p>
+            <p>Day7: ${item.day7} บาท</p>
           </div>
         </div>
       `;
     });
+  })
+  .catch(err => {
+    document.getElementById("products").innerHTML = "โหลดข้อมูลไม่ได้";
   });
 </script>
 
