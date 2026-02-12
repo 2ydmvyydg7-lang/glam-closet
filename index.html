@@ -1,66 +1,187 @@
 <!DOCTYPE html>
-<html>
+<html lang="th">
 <head>
-  <meta charset="UTF-8">
-  <title>Mini Pink Dress</title>
-  <style>
-    body {
-      font-family: serif;
-      text-align: center;
-      background: #f5f0ee;
-      margin: 0;
-      padding: 20px;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pebbles Glam Closet</title>
 
-    img {
-      width: 300px;
-      border-radius: 10px;
-    }
+<style>
+*{box-sizing:border-box;}
 
-    h1 {
-      font-size: 32px;
-      margin-top: 20px;
-    }
+body{
+  margin:0;
+  font-family: 'Georgia', serif;
+  background: linear-gradient(to bottom, #fff0f5, #ffffff);
+  text-align:center;
+  color:#333;
+}
 
-    .price {
-      font-size: 20px;
-      margin: 10px 0;
-    }
+header{
+  padding:70px 20px 30px;
+}
 
-    .form-section {
-      margin-top: 40px;
-    }
+h1{
+  margin:0;
+  font-size:42px;
+  letter-spacing:2px;
+  color:#d63384;
+}
 
-    iframe {
-      width: 100%;
-      max-width: 700px;
-      height: 750px;
-      border: none;
-      border-radius: 10px;
-    }
-  </style>
+.subtitle{
+  margin-top:10px;
+  color:#888;
+}
+
+.section{
+  padding:40px 20px;
+}
+
+.card{
+  background:#ffffff;
+  max-width:650px;
+  margin:30px auto;
+  padding:40px;
+  border-radius:15px;
+  box-shadow:0 15px 40px rgba(214,51,132,0.08);
+}
+
+.card h2{
+  margin-top:0;
+  color:#d63384;
+}
+
+.button{
+  display:inline-block;
+  margin-top:20px;
+  padding:14px 30px;
+  background:#d63384;
+  color:#fff;
+  text-decoration:none;
+  border-radius:30px;
+  font-size:15px;
+  cursor:pointer;
+  border:none;
+  transition:0.3s;
+}
+
+.button:hover{
+  background:#b0256c;
+}
+
+.line-btn{
+  background:#06C755;
+}
+
+.line-btn:hover{
+  background:#05a84e;
+}
+
+.address-box, .account-box{
+  background:#fff5f8;
+  padding:15px;
+  margin-top:15px;
+  border-radius:10px;
+  white-space:pre-line;
+  font-size:14px;
+}
+
+.notice{
+  color:#c2185b;
+  font-weight:bold;
+  margin-top:15px;
+}
+
+footer{
+  margin-top:60px;
+  padding:20px;
+  color:#999;
+  font-size:14px;
+}
+</style>
 </head>
 
 <body>
 
-  <img src="https://i.ibb.co/nsZ9yHjp/IMG-5059.png">
+<header>
+  <h1>Pebbles Glam Closet</h1>
+  <div class="subtitle">Luxury Dress Rental</div>
+</header>
 
-  <h1>Mini Pink Dress</h1>
+<section class="section">
 
-  <div class="price">1 วัน: 390 บาท</div>
-  <div class="price">3 วัน: 990 บาท</div>
-  <div class="price">5 วัน: 1590 บาท</div>
-  <div class="price">7 วัน: 1990 บาท</div>
+<!-- จอง -->
+<div class="card">
+  <h2>จองชุด</h2>
+  <a href="https://docs.google.com/forms/d/e/1FAIpQLSfo1heRu6VleMtYmpiPpfLrevYBK75oCMahNu2KvDmgDn7SAg/viewform"
+     target="_blank"
+     class="button">
+     จองเลย
+  </a>
+</div>
 
-  <div class="form-section">
-    <h2>กรอกข้อมูลเพื่อจองสินค้า</h2>
+<!-- ติดต่อแอดมิน -->
+<div class="card">
+  <h2>ติดต่อสอบถามแอดมิน</h2>
+  <a href="https://line.me/R/ti/p/@506wxved"
+     target="_blank"
+     class="button line-btn">
+     แชท LINE OA
+  </a>
+</div>
 
-    <iframe 
-      src="https://docs.google.com/forms/d/e/1FAIpQLSfo1heRu6VleMtYmpiPpfLrevYBK75oCMahNu2KvDmgDn7SAg/viewform?embedded=true">
-      กำลังโหลด…
-    </iframe>
+<!-- ชำระเงิน -->
+<div class="card">
+  <h2>ชำระเงิน</h2>
+  <p>สรุปยอดสินค้า + ค่าส่ง 39 บาท ทุกออเดอร์</p>
 
+  <div class="account-box">
+ธนาคารกสิกรไทย
+เลขบัญชี: 222-1-39651-3
+ชื่อบัญชี: อนุสรา
   </div>
+
+  <a href="https://line.me/R/ti/p/@506wxved"
+     target="_blank"
+     class="button line-btn">
+     ส่งสลิปยืนยัน
+  </a>
+</div>
+
+<!-- ส่งคืน -->
+<div class="card">
+  <h2>ที่อยู่สำหรับส่งคืนชุด</h2>
+
+  <div class="address-box" id="returnAddress">
+Pebbles Glam Closet
+488/96 ม.8 บางเลน
+บางเลน นครปฐม 73130
+โทร 0943947154
+  </div>
+
+  <div class="notice">
+    ส่งคืนผ่าน Flash เท่านั้น<br>
+    ต้องส่งก่อนบ่ายโมงของวันถัดไปหลังวันใช้งาน
+  </div>
+
+  <button class="button" onclick="copyAddress()">
+    คัดลอกที่อยู่
+  </button>
+</div>
+
+</section>
+
+<footer>
+© 2026 Pebbles Glam Closet
+</footer>
+
+<script>
+function copyAddress(){
+  const text = document.getElementById("returnAddress").innerText;
+  navigator.clipboard.writeText(text).then(function(){
+    alert("คัดลอกที่อยู่เรียบร้อยแล้ว");
+  });
+}
+</script>
 
 </body>
 </html>
