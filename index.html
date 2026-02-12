@@ -27,29 +27,16 @@
       margin: 10px 0;
     }
 
-    .form-box {
-      margin-top: 30px;
+    .form-section {
+      margin-top: 40px;
     }
 
-    input, select {
-      padding: 10px;
-      margin: 8px;
-      width: 220px;
-      font-size: 16px;
-    }
-
-    button {
-      padding: 12px 30px;
-      background: black;
-      color: white;
+    iframe {
+      width: 100%;
+      max-width: 700px;
+      height: 750px;
       border: none;
-      font-size: 16px;
-      cursor: pointer;
-      border-radius: 5px;
-    }
-
-    button:hover {
-      background: #333;
+      border-radius: 10px;
     }
   </style>
 </head>
@@ -65,54 +52,15 @@
   <div class="price">5 วัน: 1590 บาท</div>
   <div class="price">7 วัน: 1990 บาท</div>
 
-  <div class="form-box">
-    <h2>จองสินค้า</h2>
+  <div class="form-section">
+    <h2>กรอกข้อมูลเพื่อจองสินค้า</h2>
 
-    <input type="text" id="name" placeholder="ชื่อของคุณ"><br>
-    <input type="text" id="phone" placeholder="เบอร์โทร"><br>
+    <iframe 
+      src="https://docs.google.com/forms/d/e/1FAIpQLSfo1heRu6VleMtYmpiPpfLrevYBK75oCMahNu2KvDmgDn7SAg/viewform?embedded=true">
+      กำลังโหลด…
+    </iframe>
 
-    <select id="days">
-      <option value="1 วัน">1 วัน</option>
-      <option value="3 วัน">3 วัน</option>
-      <option value="5 วัน">5 วัน</option>
-      <option value="7 วัน">7 วัน</option>
-    </select><br>
-
-    <button onclick="submitForm()">จองเลย</button>
   </div>
-
-  <script>
-    function submitForm() {
-
-      const name = document.getElementById("name").value;
-      const phone = document.getElementById("phone").value;
-      const days = document.getElementById("days").value;
-
-      if (!name || !phone) {
-        alert("กรุณากรอกข้อมูลให้ครบ");
-        return;
-      }
-
-      fetch("https://script.google.com/macros/s/AKfycbwDZj8Gmz6K6cLTxR9JfHN9JNPUW7VE_uPVcDjFi3-ZCq1i2n5TVbj8clSVXgECyTX5Lw/exec", {
-        method: "POST",
-        body: JSON.stringify({
-          name: name,
-          phone: phone,
-          product: "Mini Pink Dress",
-          days: days
-        })
-      })
-      .then(response => response.json())
-      .then(data => {
-        alert("จองสำเร็จ 💖");
-        document.getElementById("name").value = "";
-        document.getElementById("phone").value = "";
-      })
-      .catch(error => {
-        alert("เกิดข้อผิดพลาด");
-      });
-    }
-  </script>
 
 </body>
 </html>
