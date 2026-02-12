@@ -1,54 +1,118 @@
-
 <!DOCTYPE html>
-<html lang="th">
+<html>
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pebbles Glam Closet</title>
-
+  <title>Mini Pink Dress</title>
   <style>
     body {
-      font-family: 'Georgia', serif;
-      background-color: #fffafb;
-      margin: 0;
-      padding: 30px;
+      font-family: serif;
       text-align: center;
-    }
-
-    h1 {
-      color: #c67b8b;
-      margin-bottom: 40px;
-    }
-
-    .product {
-      background: white;
+      background: #f5f0ee;
+      margin: 0;
       padding: 20px;
-      margin: 20px auto;
-      max-width: 400px;
-      border-radius: 15px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
     }
 
-    .product img {
-      width: 100%;
+    img {
+      width: 300px;
       border-radius: 10px;
     }
 
+    h1 {
+      font-size: 32px;
+      margin-top: 20px;
+    }
+
     .price {
-      margin-top: 15px;
-      font-weight: bold;
-      color: #444;
+      font-size: 20px;
+      margin: 10px 0;
+    }
+
+    .form-box {
+      margin-top: 30px;
+    }
+
+    input, select {
+      padding: 10px;
+      margin: 8px;
+      width: 220px;
+      font-size: 16px;
+    }
+
+    button {
+      padding: 12px 30px;
+      background: black;
+      color: white;
+      border: none;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    button:hover {
+      background: #333;
     }
   </style>
 </head>
 
 <body>
 
-  <h1>Pebbles Glam Closet</h1>
+  <img src="https://i.ibb.co/nsZ9yHjp/IMG-5059.png">
 
-  <div id="products"></div>
+  <h1>Mini Pink Dress</h1>
 
-  <script src="script.js"></script>
+  <div class="price">1 วัน: 390 บาท</div>
+  <div class="price">3 วัน: 990 บาท</div>
+  <div class="price">5 วัน: 1590 บาท</div>
+  <div class="price">7 วัน: 1990 บาท</div>
+
+  <div class="form-box">
+    <h2>จองสินค้า</h2>
+
+    <input type="text" id="name" placeholder="ชื่อของคุณ"><br>
+    <input type="text" id="phone" placeholder="เบอร์โทร"><br>
+
+    <select id="days">
+      <option value="1 วัน">1 วัน</option>
+      <option value="3 วัน">3 วัน</option>
+      <option value="5 วัน">5 วัน</option>
+      <option value="7 วัน">7 วัน</option>
+    </select><br>
+
+    <button onclick="submitForm()">จองเลย</button>
+  </div>
+
+  <script>
+    function submitForm() {
+
+      const name = document.getElementById("name").value;
+      const phone = document.getElementById("phone").value;
+      const days = document.getElementById("days").value;
+
+      if (!name || !phone) {
+        alert("กรุณากรอกข้อมูลให้ครบ");
+        return;
+      }
+
+      fetch("https://script.google.com/macros/s/AKfycbwDZj8Gmz6K6cLTxR9JfHN9JNPUW7VE_uPVcDjFi3-ZCq1i2n5TVbj8clSVXgECyTX5Lw/exec", {
+        method: "POST",
+        body: JSON.stringify({
+          name: name,
+          phone: phone,
+          product: "Mini Pink Dress",
+          days: days
+        })
+      })
+      .then(response => response.json())
+      .then(data => {
+        alert("จองสำเร็จ 💖");
+        document.getElementById("name").value = "";
+        document.getElementById("phone").value = "";
+      })
+      .catch(error => {
+        alert("เกิดข้อผิดพลาด");
+      });
+    }
+  </script>
 
 </body>
 </html>
